@@ -18,6 +18,7 @@ function App() {
       <Route path="/" component={Home} />
     </Switch>
   );
+
   return <Layout>{routes}</Layout>;
 }
 
