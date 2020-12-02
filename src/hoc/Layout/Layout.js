@@ -20,7 +20,7 @@ export default function Layout({ children }) {
         }}
       />
 
-      <main className="container mx-auto">{children}</main>
+      <main className="overflow-hidden mx-auto">{children}</main>
       <footer>ini footer</footer>
     </>
   );

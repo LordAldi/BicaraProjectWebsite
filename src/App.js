@@ -5,6 +5,10 @@ import Class from "./containers/Class/Class";
 import Explore from "./containers/Explore/Explore";
 import Home from "./containers/Home/Home";
 import Layout from "./hoc/Layout/Layout";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+// import "~slick-carousel/slick/slick.css";
+// ;
 // import logo from "./logo.svg";
 
 function App() {

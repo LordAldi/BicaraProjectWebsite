@@ -2,7 +2,31 @@ module.exports = {
   purge: ["./src/**/*.js", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    screens: {
+      sm: "640px",
+      // => @media (min-width: 640px) { ... }
+
+      md: "800px",
+      // => @media (min-width: 768px) { ... }
+
+      lg: "1024px",
+      // => @media (min-width: 1024px) { ... }
+
+      xl: "1280px",
+      // => @media (min-width: 1280px) { ... }
+
+      "2xl": "1536px",
+      // => @media (min-width: 1536px) { ... }
+    },
+    extend: {
+      spacing: {
+        1000: "62.5rem",
+        700: "43.75rem",
+      },
+      colors: {
+        primary: "#F4A846",
+      },
+    },
   },
   variants: {
     extend: {},
