@@ -25,6 +25,10 @@ module.exports = {
       },
       colors: {
         primary: "#F4A846",
+        secondary: "#FCC67E",
+      },
+      width: {
+        "6/4": "150%",
       },
     },
   },

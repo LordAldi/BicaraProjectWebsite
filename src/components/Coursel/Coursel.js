@@ -26,7 +26,7 @@ class Coursel extends Component {
         <CourselItem source={ban1} />
         <CourselItem source={ban2} />
         <CourselItem source={ban3} />
-        <CourselItem source={ban4} />
+        {/* <CourselItem source={ban4} /> */}
       </Slider>
     );
   }
