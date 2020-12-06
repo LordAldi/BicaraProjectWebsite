@@ -1,8 +1,7 @@
 import SigninHero from "../../../assets/images/signin.png";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import Input from "../../../components/UI/Input/Input";
 import * as Yup from "yup";
-import FormSignin from "../../../components/Form/FomSignin/FormSignin";
 import Button from "../../../components/UI/Button/Button";
 import { Link } from "react-router-dom";
 
@@ -85,7 +84,7 @@ export default function SignIn() {
                   type="submit"
                   disabled={!(dirty && isValid)}
                   btnColor="primary"
-                  styling="w-3/4 self-center	md:self-start rounded-lg "
+                  styling="w-3/4 self-center md:w-6/4	md:self-start rounded-lg "
                 >
                   SignIn
                 </Button>

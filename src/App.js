@@ -1,6 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import About from "./containers/About/About";
 import SignIn from "./containers/Auth/SignIn/SignIn";
+import Login from "./containers/Auth/Login/Login";
 import Class from "./containers/Class/Class";
 import Explore from "./containers/Explore/Explore";
 import Home from "./containers/Home/Home";
@@ -19,6 +20,7 @@ function App() {
       <Route path="/class" component={Class} />
       <Route path="/about" component={About} />
       <Route path="/signin" component={SignIn} />
+      <Route path="/login" component={Login} />
       <Route path="/" component={Home} />
     </Switch>
   );
