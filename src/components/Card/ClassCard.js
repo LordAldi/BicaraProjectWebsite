@@ -1,6 +1,7 @@
 import LazyLoad from "react-lazyload";
 
-const ContentCard = ({ data, hide, rounded, editor }) => {
+const ClassCard = ({ data, hide, rounded, editor }) => {
+  console.log(data);
   return (
     <div
       className={`w-full ${
@@ -20,14 +21,19 @@ const ContentCard = ({ data, hide, rounded, editor }) => {
         />
       </LazyLoad>
       <div
-        className={`bg-white h-15 ${rounded && "rounded-b-2xl"} p-2 shadow-lg`}
+        className={`bg-white h-15 ${
+          rounded && "rounded-b-2xl"
+        } p-2 shadow-lg flex flex-col`}
       >
-        <p className={`${editor ? "text-xs" : "text-xxs"} truncate`}>
-          {data.judul}
+        <h4 className="self-center text-2xl	font-semibold pb-3 pt-1">
+          {data.name}
+        </h4>
+        <p className={`${editor ? "text-xs" : "text-xxs"} text-gray-400`}>
+          {data.description}
         </p>
       </div>
     </div>
   );
 };
 
-export default ContentCard;
+export default ClassCard;

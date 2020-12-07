@@ -1,6 +1,7 @@
 import Coursel from "../../components/Coursel/Coursel";
 import { useQuery, gql } from "@apollo/client";
 import ContentCard from "../../components/Card/ContentCard";
+import ClassCard from "../../components/Card/ClassCard";
 
 const DATA = gql`
   query getCoursel {
@@ -20,22 +21,26 @@ const DATA = gql`
         url
       }
     }
-    editorChoice {
-      videos {
-        judul
-        id
-        thumbnail {
-          url
-        }
+    editorsPicks(limit: 3, sort: "created_at:desc") {
+      id
+      thumbnail {
+        url
       }
+      nama
+    }
+    classes(limit: 3, sort: "created_at:desc") {
+      id
+      thumbnail {
+        url
+      }
+      name
+      description
     }
   }
 `;
 
 export default function Home() {
   const { loading, error, data } = useQuery(DATA);
-  console.log("Aeff");
-  if (data) console.log(data);
 
   return (
     <div className="w-screen">
@@ -44,12 +49,14 @@ export default function Home() {
       ) : (
         <div className="h-96 bg-secondary w-full animate-pulse"></div>
       )}
-      <div className="container mx-auto px-3 my-10">
+      <div className="container mx-auto lg:px-20 my-10">
         <h3 className="text-2xl	p-2 font-bold	">New Release</h3>
         {!loading && data ? (
           <div className="grid grid-cols-2 lg:grid-cols-4 justify-center	 gap-4">
             {data.videos.map((video, i) => {
-              return <ContentCard key={video.id} data={video} hide={i > 3} />;
+              return (
+                <ContentCard rounded key={video.id} data={video} hide={i > 3} />
+              );
             })}
           </div>
         ) : (
@@ -60,11 +67,27 @@ export default function Home() {
             <div className="h-60 bg-secondary w-full animate-pulse"></div>
           </div>
         )}
-        <h3>EDITORS' PICK</h3>
+        <h3 className="text-2xl	p-2 font-bold	mt-6">EDITORS' PICK</h3>
         {!loading && data ? (
           <div className="grid grid-cols-1  md:grid-cols-3  justify-center	 gap-4">
-            {data.editorChoice.videos.map((video, i) => {
-              return <ContentCard key={video.id} data={video} hide={i > 3} />;
+            {data.editorsPicks.map((video, i) => {
+              return (
+                <ContentCard editor key={video.id} data={video} hide={i > 3} />
+              );
+            })}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1  md:grid-cols-3  justify-center	 gap-4">
+            <div className="h-60 bg-secondary w-full animate-pulse"></div>
+            <div className="h-60 bg-secondary w-full animate-pulse"></div>
+            <div className="h-60 bg-secondary w-full animate-pulse"></div>
+          </div>
+        )}
+        <h3 className="text-2xl	p-2 font-bold mt-6	">Class</h3>
+        {!loading && data ? (
+          <div className="grid grid-cols-1  md:grid-cols-3  justify-center	 gap-4">
+            {data.classes.map((classe, i) => {
+              return <ClassCard editor key={classe.id} data={classe} />;
             })}
           </div>
         ) : (

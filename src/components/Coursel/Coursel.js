@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import React from "react";
 
 function Coursel({ data }) {
-  console.log(data);
   const settings = {
     className: "center min-h-96",
     centerMode: true,
@@ -26,7 +25,6 @@ function Coursel({ data }) {
   };
 
   let coursels = data.map((coursel) => {
-    console.log(coursel);
     return (
       <a href={coursel.Link} key={coursel.id}>
         <CourselItem source={coursel.picture.url} />

@@ -7,7 +7,7 @@ export default function Layout({ children }) {
   const [showSideDrawer, setShowSideDrawer] = useState(false);
 
   return (
-    <>
+    <div className="bg-gray-50 pt-14">
       <Navbar
         drawerToggleClicked={() => {
           setShowSideDrawer(!showSideDrawer);
@@ -22,6 +22,6 @@ export default function Layout({ children }) {
 
       <main className="overflow-hidden mx-auto">{children}</main>
       <footer>ini footer</footer>
-    </>
+    </div>
   );
 }
