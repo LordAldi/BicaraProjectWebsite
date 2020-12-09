@@ -1,10 +1,26 @@
+import { useContext, useState } from "react";
 import SigninHero from "../../../assets/images/signin.png";
 import { Formik, Form } from "formik";
 import Input from "../../../components/UI/Input/Input";
 import * as Yup from "yup";
 import Button from "../../../components/UI/Button/Button";
 import { Link } from "react-router-dom";
-
+import { AuthContext } from "../../../context";
+import { useMutation, gql } from "@apollo/client";
+const SIGNIN = gql`
+  mutation createUser($email: String!, $username: String!, $password: String!) {
+    register(
+      input: { username: $username, email: $email, password: $password }
+    ) {
+      jwt
+      user {
+        username
+        email
+        id
+      }
+    }
+  }
+`;
 const SignInSchema = Yup.object().shape({
   userName: Yup.string()
     .required("Username is Required")
@@ -22,7 +38,20 @@ const SignInSchema = Yup.object().shape({
 });
 
 export default function SignIn() {
-  const formList = ["userName", "email", "password", "conPassword"];
+  const authContext = useContext(AuthContext);
+  const [
+    signinUser,
+    { loading: mutationLoading, error: mutationError },
+  ] = useMutation(SIGNIN);
+
+  // console.log("loading");
+  // console.log(mutationLoading);
+  // console.log("error");
+  // console.log(mutationError);
+  // console.log("data");
+  // console.log(mutationData);
+  // console.log("gerrors");
+  // console.log(gErrors);
 
   return (
     <Formik
@@ -33,8 +62,30 @@ export default function SignIn() {
         conPassword: "",
       }}
       validationSchema={SignInSchema}
-      onSubmit={(values) => {
+      onSubmit={async (values) => {
         console.log(values);
+
+        try {
+          const { data, errors } = await signinUser({
+            variables: {
+              username: values.userName,
+              email: values.email,
+              password: values.password,
+            },
+            onError: (er) => {
+              console.log(er);
+            },
+          });
+          console.log(data);
+
+          authContext.login(
+            data.register.user.username,
+            data.register.user.id,
+            data.register.jwt
+          );
+        } catch (error) {
+          console.log(error);
+        }
       }}
     >
       {(formik) => {
@@ -51,6 +102,13 @@ export default function SignIn() {
             <div className="flex flex-col items-center md:items-start">
               <h1 className="text-3xl font-bold mb-4	">SignIn</h1>
               <Form className="flex flex-col items-center md:items-start md:justify-start	">
+                {/* {error && <div>ada error</div>} */}
+                {mutationLoading && <p>Loading...</p>}
+                {mutationError && (
+                  <p className="text-red-500">
+                    Email or Username Already Taken
+                  </p>
+                )}
                 <Input
                   id="userName"
                   type="text"
@@ -80,9 +138,11 @@ export default function SignIn() {
                   touched={touched.conPassword}
                   styling="mb-10"
                 />
+
                 <Button
                   type="submit"
                   disabled={!(dirty && isValid)}
+                  loading={mutationLoading}
                   btnColor="primary"
                   styling="w-3/4 self-center md:w-6/4	md:self-start rounded-lg "
                 >

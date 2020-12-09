@@ -44,6 +44,7 @@ module.exports = {
       width: {
         "6/4": "150%",
       },
+      padding: { "fluid-video": "56.25%" },
     },
   },
   variants: {

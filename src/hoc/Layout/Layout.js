@@ -2,6 +2,7 @@ import Navbar from "../../components/Navigation/Navbar/Navbar";
 import Sidebar from "../../components/Navigation/Sidebar/Sidebar";
 
 import { useState } from "react";
+import Footer from "../../components/Footer/Footer";
 
 export default function Layout({ children }) {
   const [showSideDrawer, setShowSideDrawer] = useState(false);
@@ -21,7 +22,7 @@ export default function Layout({ children }) {
       />
 
       <main className="overflow-hidden mx-auto">{children}</main>
-      <footer>ini footer</footer>
+      <Footer />
     </div>
   );
 }

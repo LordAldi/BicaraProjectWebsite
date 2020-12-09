@@ -20,6 +20,7 @@ const DATA = gql`
       thumbnail {
         url
       }
+      slug
     }
     editorsPicks(limit: 3, sort: "created_at:desc") {
       id
@@ -85,10 +86,15 @@ export default function Home() {
         )}
         <h3 className="text-2xl	p-2 font-bold mt-6	">Class</h3>
         {!loading && data ? (
-          <div className="grid grid-cols-1  md:grid-cols-3  justify-center	 gap-4">
-            {data.classes.map((classe, i) => {
-              return <ClassCard editor key={classe.id} data={classe} />;
-            })}
+          <div>
+            <div className="grid grid-cols-1  md:grid-cols-3  justify-center	 gap-4">
+              {data.classes.map((classe, i) => {
+                return <ClassCard editor key={classe.id} data={classe} />;
+              })}
+            </div>
+            <div className="flex justify-end">
+              <p>see all class</p>
+            </div>
           </div>
         ) : (
           <div className="grid grid-cols-1  md:grid-cols-3  justify-center	 gap-4">

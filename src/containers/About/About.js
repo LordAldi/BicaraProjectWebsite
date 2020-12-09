@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function About() {
   const [count, setCount] = useState(0);
-  console.log(count);
+
   return (
     <div>
       About {count}
