@@ -1,12 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import SigninHero from "../../../assets/images/signin.png";
 import { Formik, Form } from "formik";
 import Input from "../../../components/UI/Input/Input";
 import * as Yup from "yup";
 import Button from "../../../components/UI/Button/Button";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../../context";
 import { useMutation, gql } from "@apollo/client";
+import { UserContext } from "../../../Provider/UserProvider/UserProvider";
 const SIGNIN = gql`
   mutation createUser($email: String!, $username: String!, $password: String!) {
     register(
@@ -38,20 +38,11 @@ const SignInSchema = Yup.object().shape({
 });
 
 export default function SignIn() {
-  const authContext = useContext(AuthContext);
+  const { login } = useContext(UserContext);
   const [
     signinUser,
     { loading: mutationLoading, error: mutationError },
   ] = useMutation(SIGNIN);
-
-  // console.log("loading");
-  // console.log(mutationLoading);
-  // console.log("error");
-  // console.log(mutationError);
-  // console.log("data");
-  // console.log(mutationData);
-  // console.log("gerrors");
-  // console.log(gErrors);
 
   return (
     <Formik
@@ -76,13 +67,7 @@ export default function SignIn() {
               console.log(er);
             },
           });
-          console.log(data);
-
-          authContext.login(
-            data.register.user.username,
-            data.register.user.id,
-            data.register.jwt
-          );
+          login(data.register);
         } catch (error) {
           console.log(error);
         }

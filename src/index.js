@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { UserProvider } from "./Provider/UserProvider/UserProvider";
 const httpLink = createHttpLink({
   uri: "http://localhost:1337/graphql",
 });
@@ -18,7 +19,7 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: token ? token : "",
+      authorization: token ? "Bearer " + token : "",
     },
   };
 });
@@ -30,9 +31,11 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <UserProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </UserProvider>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")

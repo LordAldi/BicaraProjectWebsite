@@ -1,15 +1,14 @@
 import { useContext } from "react";
-
+import { UserContext } from "../../../Provider/UserProvider/UserProvider";
 import { Route, Redirect } from "react-router-dom";
-import { AuthContext } from "../../../context";
 
 const AuthRoute = ({ component: Component, authenticated, ...rest }) => {
-  const { isAuth } = useContext(AuthContext);
+  const { user } = useContext(UserContext);
   return (
     <Route
       {...rest}
       render={(props) =>
-        isAuth === true ? <Redirect to="/" /> : <Component {...props} />
+        user.isAuth === true ? <Redirect to="/" /> : <Component {...props} />
       }
     />
   );

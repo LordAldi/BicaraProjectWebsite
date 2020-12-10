@@ -2,7 +2,8 @@ import Coursel from "../../components/Coursel/Coursel";
 import { useQuery, gql } from "@apollo/client";
 import ContentCard from "../../components/Card/ContentCard";
 import ClassCard from "../../components/Card/ClassCard";
-
+import { useContext } from "react";
+import { UserContext } from "../../Provider/UserProvider/UserProvider";
 const DATA = gql`
   query getCoursel {
     coursel {
@@ -42,6 +43,7 @@ const DATA = gql`
 
 export default function Home() {
   const { loading, error, data } = useQuery(DATA);
+  const { user } = useContext(UserContext);
 
   return (
     <div className="w-screen">
@@ -51,6 +53,9 @@ export default function Home() {
         <div className="h-96 bg-secondary w-full animate-pulse"></div>
       )}
       <div className="container mx-auto lg:px-20 my-10">
+        <p>hallo {user.username}</p>
+        <p> {user.isAuth ? "isAuth" : "notAuth"}</p>
+        <p>your ID {user.ID}</p>
         <h3 className="text-2xl	p-2 font-bold	">New Release</h3>
         {!loading && data ? (
           <div className="grid grid-cols-2 lg:grid-cols-4 justify-center	 gap-4">

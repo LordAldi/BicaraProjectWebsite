@@ -1,10 +1,24 @@
 import LoginHero from "../../../assets/images/login.png";
 import { Formik, Form } from "formik";
+import { useContext } from "react";
 import Input from "../../../components/UI/Input/Input";
 import * as Yup from "yup";
 import Button from "../../../components/UI/Button/Button";
 import { Link } from "react-router-dom";
+import { useMutation, gql } from "@apollo/client";
 
+import { UserContext } from "../../../Provider/UserProvider/UserProvider";
+const LOGIN = gql`
+  mutation login($slug: String!, $password: String!) {
+    login(input: { identifier: $slug, password: $password }) {
+      jwt
+      user {
+        username
+        id
+      }
+    }
+  }
+`;
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email().required("Email is required"),
 
@@ -14,6 +28,12 @@ const LoginSchema = Yup.object().shape({
 });
 
 export default function Login() {
+  const { login } = useContext(UserContext);
+
+  const [
+    loginUser,
+    { loading: mutationLoading, error: mutationError },
+  ] = useMutation(LOGIN);
   return (
     <Formik
       initialValues={{
@@ -21,8 +41,21 @@ export default function Login() {
         password: "",
       }}
       validationSchema={LoginSchema}
-      onSubmit={(values) => {
-        console.log(values);
+      onSubmit={async (values) => {
+        try {
+          const { data, errors } = await loginUser({
+            variables: {
+              slug: values.email,
+              password: values.password,
+            },
+            onError: (er) => {
+              console.log(er);
+            },
+          });
+          login(data.login);
+        } catch (error) {
+          console.log(error);
+        }
       }}
     >
       {(formik) => {
@@ -35,6 +68,10 @@ export default function Login() {
             <div className="flex flex-col items-center md:items-start">
               <h1 className="text-3xl font-bold mb-4	">Login</h1>
               <Form className="flex flex-col items-center md:items-start md:justify-start	">
+                {mutationLoading && <p>Loading...</p>}
+                {mutationError && (
+                  <p className="text-red-500">Email or Password is incorrect</p>
+                )}
                 <Input
                   id="email"
                   type="email"
@@ -54,6 +91,7 @@ export default function Login() {
                 <Button
                   type="submit"
                   disabled={!(dirty && isValid)}
+                  loading={mutationLoading}
                   btnColor="primary"
                   styling="w-3/4 self-center md:w-6/4	md:self-start rounded-lg "
                 >

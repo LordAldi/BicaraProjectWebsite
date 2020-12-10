@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import NavigationItem from "./NavigationItem/NavigationItem";
-
+import { UserContext } from "../../../Provider/UserProvider/UserProvider";
 export default function NavigationItems() {
+  const { user, logout } = useContext(UserContext);
+
   return (
     <ul className="m-0 p-0 flex list-none flex-col md:flex-row items-center h-full">
       <NavigationItem link="/" exact>
@@ -15,9 +18,15 @@ export default function NavigationItems() {
       <NavigationItem link="/about" exact>
         About
       </NavigationItem>
-      <NavigationItem link="/signin" exact>
-        SignIn
-      </NavigationItem>
+      {user.isAuth ? (
+        <li className="m-0 flex  w-auto items-center md:my-3.5 md:box-border md:block md:w-full text-xl">
+          <button onClick={logout}>Logout</button>
+        </li>
+      ) : (
+        <NavigationItem link="/signin" exact>
+          SignIn
+        </NavigationItem>
+      )}
     </ul>
   );
 }
