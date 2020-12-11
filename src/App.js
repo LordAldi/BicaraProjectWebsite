@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Video from "./containers/Video/Video";
 import AuthRoute from "./components/utils/AuthRoute/AuthRoute";
+import Category from "./containers/Category/Category";
 // import { useState, useEffect } from "react";
 
 // import "~slick-carousel/slick/slick.css";
@@ -26,6 +27,7 @@ function App() {
       <AuthRoute path="/signin" component={SignIn} />
       <AuthRoute path="/login" component={Login} />
       <Route path="/collection/:slug" component={Video} />
+      <Route path="/category/:slug" component={Category} />
       <Route path="/" exact component={Home} />
     </Switch>
   );
