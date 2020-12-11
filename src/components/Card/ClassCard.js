@@ -1,7 +1,6 @@
 import LazyLoad from "react-lazyload";
 
 const ClassCard = ({ data, hide, rounded, editor }) => {
-  console.log(data);
   return (
     <div
       className={`w-full ${

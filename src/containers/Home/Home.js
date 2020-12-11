@@ -68,13 +68,11 @@ export default function Home() {
           <div className="grid grid-cols-2 lg:grid-cols-4 justify-center	 gap-4">
             {data.videos.map((video, i) => {
               return (
-                <Link to={`${video.slug ? "/collection/" + video.slug : "/"}`}>
-                  <ContentCard
-                    rounded
-                    key={video.id}
-                    data={video}
-                    hide={i > 3}
-                  />
+                <Link
+                  to={`${video.slug ? "/collection/" + video.slug : "/"}`}
+                  key={video.id}
+                >
+                  <ContentCard rounded data={video} hide={i > 3} />
                 </Link>
               );
             })}

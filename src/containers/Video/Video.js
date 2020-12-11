@@ -36,7 +36,6 @@ const Video = ({ match }) => {
   });
   let show = null;
   if (data) {
-    console.log(data);
     const { source, judul, by, description, categories } = data.videoBySlug;
     let news = data.videos.map((video) => {
       return <ContentCard rounded key={video.id} data={video} />;
@@ -70,7 +69,6 @@ const Video = ({ match }) => {
         </div>
       </div>
     );
-    console.log(source);
   }
 
   return (

@@ -56,8 +56,11 @@ const Category = ({ match }) => {
           <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 justify-center	 gap-4">
             {videos.map((video, i) => {
               return (
-                <Link to={`${video.slug ? "/collection/" + video.slug : "/"}`}>
-                  <ContentCard rounded key={video.id} data={video} popular />
+                <Link
+                  key={video.id}
+                  to={`${video.slug ? "/collection/" + video.slug : "/"}`}
+                >
+                  <ContentCard rounded data={video} popular />
                 </Link>
               );
             })}

@@ -43,9 +43,10 @@ export default function Explore() {
           {data.categories.map((category) => {
             return (
               <Link
+                key={category.id}
                 to={`${category.slug ? "/category/" + category.slug : "/"}`}
               >
-                <CategoryCard key={category.id} category={category} />
+                <CategoryCard category={category} />
               </Link>
             );
           })}
@@ -56,8 +57,11 @@ export default function Explore() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
             {data.popular.videos.map((video) => {
               return (
-                <Link to={`${video.slug ? "/collection/" + video.slug : "/"}`}>
-                  <ContentCard popular key={video.id} data={video} />
+                <Link
+                  key={video.id}
+                  to={`${video.slug ? "/collection/" + video.slug : "/"}`}
+                >
+                  <ContentCard popular data={video} />
                 </Link>
               );
             })}
@@ -66,13 +70,11 @@ export default function Explore() {
           <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 justify-center	 gap-4">
             {data.videos.map((video, i) => {
               return (
-                <Link to={`${video.slug ? "/collection/" + video.slug : "/"}`}>
-                  <ContentCard
-                    rounded
-                    key={video.id}
-                    data={video}
-                    hide={i > 3}
-                  />
+                <Link
+                  key={video.id}
+                  to={`${video.slug ? "/collection/" + video.slug : "/"}`}
+                >
+                  <ContentCard rounded data={video} hide={i > 3} />
                 </Link>
               );
             })}

@@ -45,7 +45,6 @@ export const UserProvider = ({ children }) => {
   };
   useEffect(() => {
     if (!loading && data && !error) {
-      console.log("harusny sekali");
       setUser((user) => ({
         username: data.me.username,
         ID: data.me.id,
