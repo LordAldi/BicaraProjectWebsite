@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
-import NavigationItem from "../Navigation/NavigationItems/NavigationItem/NavigationItem";
 import ig from "../../assets/images/ig.png";
 import fb from "../../assets/images/fb.png";
 import tw from "../../assets/images/tw.png";
@@ -41,9 +40,9 @@ const Footer = () => {
         <div className="flex flex-col content-center justify-center	">
           <h5 className="self-center py-1">Social Media</h5>
           <div className="flex">
-            <img src={ig} className="px-2" />
-            <img src={fb} className="px-2" />
-            <img src={tw} className="px-2" />
+            <img src={ig} className="px-2" alt="ig" />
+            <img src={fb} className="px-2" alt="fb" />
+            <img src={tw} className="px-2" alt="tw" />
           </div>
         </div>
       </div>

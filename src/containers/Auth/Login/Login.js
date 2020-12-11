@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import Button from "../../../components/UI/Button/Button";
 import { Link } from "react-router-dom";
 import { useMutation, gql } from "@apollo/client";
-
+import { Helmet } from "react-helmet";
 import { UserContext } from "../../../Provider/UserProvider/UserProvider";
 const LOGIN = gql`
   mutation login($slug: String!, $password: String!) {
@@ -43,7 +43,7 @@ export default function Login() {
       validationSchema={LoginSchema}
       onSubmit={async (values) => {
         try {
-          const { data, errors } = await loginUser({
+          const { data } = await loginUser({
             variables: {
               slug: values.email,
               password: values.password,
@@ -58,6 +58,11 @@ export default function Login() {
         }
       }}
     >
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Login</title>
+        <meta name="description" content="Login For Bicara Project" />
+      </Helmet>
       {(formik) => {
         const { errors, touched, isValid, dirty } = formik;
         return (

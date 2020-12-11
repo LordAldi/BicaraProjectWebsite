@@ -1,7 +1,7 @@
 import { useQuery, gql } from "@apollo/client";
 import ReactPlayer from "react-player/youtube";
 import ContentCard from "../../components/Card/ContentCard";
-
+import { Helmet } from "react-helmet";
 const DATA = gql`
   query Video($slug: String!) {
     videoBySlug(slug: $slug) {
@@ -43,6 +43,11 @@ const Video = ({ match }) => {
     });
     show = (
       <div className="container mx-auto px-10 flex items-center flex-col">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{judul}</title>
+          <meta name="description" content={description} />
+        </Helmet>
         <div className="w-96 md:w-700">
           <div className="relative h-0 pb-fluid-video ">
             <ReactPlayer
@@ -68,7 +73,22 @@ const Video = ({ match }) => {
     console.log(source);
   }
 
-  return <div>{data && !loading ? show : <div>loading ... </div>}</div>;
+  return (
+    <div>
+      {data && !loading ? (
+        show
+      ) : (
+        <div>
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>Video</title>
+            <meta name="description" content="Video For Bicara Project" />
+          </Helmet>
+          loading ...{" "}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Video;

@@ -5,6 +5,7 @@ import ClassCard from "../../components/Card/ClassCard";
 import { useContext } from "react";
 import { UserContext } from "../../Provider/UserProvider/UserProvider";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 const DATA = gql`
   query getCoursel {
     coursel {
@@ -48,6 +49,11 @@ export default function Home() {
 
   return (
     <div className="w-screen">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Home</title>
+        <meta name="description" content="Home for Bicara Project" />
+      </Helmet>
       {!loading && data ? (
         <Coursel data={data.coursel.CourselItem} />
       ) : (

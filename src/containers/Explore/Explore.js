@@ -1,7 +1,7 @@
 import { useQuery, gql } from "@apollo/client";
 import CategoryCard from "../../components/Card/CategoryCard";
 import { Link } from "react-router-dom";
-
+import { Helmet } from "react-helmet";
 import ContentCard from "../../components/Card/ContentCard";
 const DATA = gql`
   query explore {
@@ -81,5 +81,14 @@ export default function Explore() {
       </>
     );
   }
-  return <div className="w-screen container mx-auto lg:px-20">{show}</div>;
+  return (
+    <div className="w-screen container mx-auto lg:px-20">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Explore</title>
+        <meta name="description" content="Explore for Bicara Project" />
+      </Helmet>
+      {show}
+    </div>
+  );
 }

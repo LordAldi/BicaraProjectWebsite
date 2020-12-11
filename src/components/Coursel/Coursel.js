@@ -1,10 +1,5 @@
 import Slider from "react-slick";
-import { Component } from "react";
 import CourselItem from "./CourselItem/CourselItem";
-import ban1 from "../../assets/images/ban1.png";
-import ban2 from "../../assets/images/ban2.png";
-import ban3 from "../../assets/images/ban3.png";
-import { Link } from "react-router-dom";
 import React from "react";
 
 function Coursel({ data }) {

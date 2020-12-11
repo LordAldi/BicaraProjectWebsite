@@ -1,5 +1,4 @@
 import LazyLoad from "react-lazyload";
-import { Link } from "react-router-dom";
 
 const ContentCard = ({ data, hide, rounded, editor, popular }) => {
   return (

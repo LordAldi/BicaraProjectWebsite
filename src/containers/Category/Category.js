@@ -1,6 +1,7 @@
-import { useQuery, gql } from "@apollo/client";
+import { useQuery, gql, from } from "@apollo/client";
 import { Link } from "react-router-dom";
 import ContentCard from "../../components/Card/ContentCard";
+import { Helmet } from "react-helmet";
 const DATA = gql`
   query Category($slug: String!) {
     categoryBySlug(slug: $slug) {
@@ -29,11 +30,25 @@ const Category = ({ match }) => {
       slug: match.params.slug,
     },
   });
-  let show = <div>Loading...</div>;
+  let show = (
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Category</title>
+        <meta name="description" content="Category for Bicara Project" />
+      </Helmet>
+      <div>Loading...</div>
+    </>
+  );
   if (!loading && data) {
-    const { id, name, slug, thumbnail, videos } = data.categoryBySlug;
+    const { id, name, description, thumbnail, videos } = data.categoryBySlug;
     show = (
       <>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{name}</title>
+          <meta name="description" content={description} />
+        </Helmet>
         <div>
           <img src={thumbnail.url} alt={name} />
         </div>
