@@ -11,6 +11,7 @@ const DATA = gql`
     coursel {
       CourselItem {
         id
+        Link
         picture {
           url
           id
@@ -25,15 +26,17 @@ const DATA = gql`
       }
       slug
     }
-    editorsPicks(limit: 3, sort: "created_at:desc") {
+    editors(limit: 3, sort: "created_at:desc") {
       id
       thumbnail {
         url
       }
-      nama
+      name
+      slug
     }
     classes(limit: 3, sort: "created_at:desc") {
       id
+      slug
       thumbnail {
         url
       }
@@ -88,9 +91,11 @@ export default function Home() {
         <h3 className="text-2xl	p-2 font-bold	mt-6">EDITORS' PICK</h3>
         {!loading && data ? (
           <div className="grid grid-cols-1  md:grid-cols-3  justify-center	 gap-4">
-            {data.editorsPicks.map((video, i) => {
+            {data.editors.map((video, i) => {
               return (
-                <ContentCard editor key={video.id} data={video} hide={i > 3} />
+                <Link key={video.id} to={`/ep/${video.slug}`}>
+                  <ContentCard editor data={video} hide={i > 3} />
+                </Link>
               );
             })}
           </div>

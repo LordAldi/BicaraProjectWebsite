@@ -2,6 +2,7 @@ import { useQuery, gql } from "@apollo/client";
 import ReactPlayer from "react-player/youtube";
 import ContentCard from "../../components/Card/ContentCard";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 const DATA = gql`
   query Video($slug: String!) {
     videoBySlug(slug: $slug) {
@@ -17,7 +18,7 @@ const DATA = gql`
         name
       }
     }
-    videos {
+    videos(limit: 5, sort: "created_at:desc") {
       id
       thumbnail {
         url
@@ -38,7 +39,14 @@ const Video = ({ match }) => {
   if (data) {
     const { source, judul, by, description, categories } = data.videoBySlug;
     let news = data.videos.map((video) => {
-      return <ContentCard rounded key={video.id} data={video} />;
+      return (
+        <Link
+          to={`${video.slug ? "/collection/" + video.slug : "/"}`}
+          key={video.id}
+        >
+          <ContentCard rounded key={video.id} data={video} />
+        </Link>
+      );
     });
     show = (
       <div className="container mx-auto px-10 flex items-center flex-col">
@@ -61,9 +69,9 @@ const Video = ({ match }) => {
         </div>
         <div className="grid md:grid-cols-4 gap-4">
           <div className="md:col-span-3">
-            <h2>{judul}</h2>
-            <p>{by}</p>
-            <p>{description}</p>
+            <h2 className="text-2xl mb-4 text-bold">{judul}</h2>
+            <p className="text-gray-300">by {by}</p>
+            <p className="text-gray-500">{description}</p>
           </div>
           <div>{news}</div>
         </div>
