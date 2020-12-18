@@ -2,13 +2,15 @@ import { useQuery, gql } from "@apollo/client";
 import ReactPlayer from "react-player/youtube";
 import ContentCard from "../../components/Card/ContentCard";
 import { Helmet } from "react-helmet";
+import ReactMarkdown from "react-markdown";
+
 import { Link } from "react-router-dom";
 const DATA = gql`
   query Video($slug: String!) {
     videoBySlug(slug: $slug) {
       id
       slug
-      created_at
+      published_at
       judul
       by
       description
@@ -18,7 +20,7 @@ const DATA = gql`
         name
       }
     }
-    videos(limit: 5, sort: "created_at:desc") {
+    videos(limit: 5, sort: "published_at:desc") {
       id
       thumbnail {
         url
@@ -71,7 +73,7 @@ const Video = ({ match }) => {
           <div className="md:col-span-3">
             <h2 className="text-2xl mb-4 text-bold">{judul}</h2>
             <p className="text-gray-300">by {by}</p>
-            <p className="text-gray-500">{description}</p>
+            <ReactMarkdown className="markdown">{description}</ReactMarkdown>
           </div>
           <div>{news}</div>
         </div>

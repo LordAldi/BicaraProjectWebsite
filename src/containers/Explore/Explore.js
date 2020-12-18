@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import ContentCard from "../../components/Card/ContentCard";
 const DATA = gql`
   query explore {
-    categories {
+    categories(sort: "published_at:desc") {
       id
       name
       slug

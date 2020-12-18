@@ -7,9 +7,28 @@ import StaffCard from "../../components/Card/StaffCard";
 import raya from "../../assets/images/raya.png";
 import joddy from "../../assets/images/joddy.png";
 import chika from "../../assets/images/chika.png";
+import { useQuery, gql } from "@apollo/client";
 
+const DATA = gql`
+  query getTeam {
+    team {
+      id
+      TeamMember {
+        id
+        name
+        desc
+        role
+        email
+        photo {
+          url
+        }
+      }
+    }
+  }
+`;
 export default function About() {
-  const [count, setCount] = useState(0);
+  const { loading, error, data } = useQuery(DATA);
+
   const settings = {
     className: "center",
     infinite: true,
@@ -17,9 +36,9 @@ export default function About() {
 
     centerPadding: "100px",
     autoplay: true,
-    autoplaySpeed: 1500,
+    autoplaySpeed: 3000,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     speed: 500,
     pauseOnHover: true,
     responsive: [
@@ -27,12 +46,16 @@ export default function About() {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
+          slidesToScroll: 2,
+          autoplaySpeed: 2000,
         },
       },
       {
         breakpoint: 720,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplaySpeed: 1000,
         },
       },
     ],
@@ -81,6 +104,16 @@ export default function About() {
       img: chika,
     },
   ];
+  let team = <div>Loading...</div>;
+  if (!loading && data) {
+    team = (
+      <Slider {...settings}>
+        {data.team.TeamMember.map((staff) => {
+          return <StaffCard data={staff} />;
+        })}
+      </Slider>
+    );
+  }
   return (
     <div>
       <div
@@ -150,13 +183,7 @@ export default function About() {
           </p>
         </div>
       </div>
-      <div className="lg:px-32 pb-24">
-        <Slider {...settings}>
-          {staffs.map((staff) => {
-            return <StaffCard data={staff} />;
-          })}
-        </Slider>
-      </div>
+      <div className="lg:px-32 pb-24">{team}</div>
     </div>
   );
 }

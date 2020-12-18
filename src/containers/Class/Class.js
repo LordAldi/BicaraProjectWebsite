@@ -1,12 +1,10 @@
-import { useQuery, gql, from } from "@apollo/client";
-import { Link } from "react-router-dom";
-import ContentCard from "../../components/Card/ContentCard";
+import { useQuery, gql } from "@apollo/client";
 import { Helmet } from "react-helmet";
 import banner from "../../assets/images/bannerClass.jpg";
 import ClassCard from "../../components/Card/ClassCard";
 const DATA = gql`
   query getClasses {
-    classes {
+    classes(sort: "published_at:desc") {
       id
       name
       slug
@@ -19,11 +17,7 @@ const DATA = gql`
 `;
 
 const Class = ({ match }) => {
-  const { loading, error, data } = useQuery(DATA, {
-    variables: {
-      slug: match.params.slug,
-    },
-  });
+  const { loading, error, data } = useQuery(DATA);
   let show = <div>Loading...</div>;
   if (!loading && data) {
     show = (

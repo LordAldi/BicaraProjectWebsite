@@ -49,7 +49,7 @@ const Category = ({ match }) => {
           <title>{name}</title>
           <meta name="description" content={description} />
         </Helmet>
-        <div>
+        <div className="flex justify-center ">
           <img src={thumbnail.url} alt={name} />
         </div>
         <div className="container mx-auto lg:px-20">

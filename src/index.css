@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind screens;
+@layer components {
+  .btn-blue {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+  }
+  .markdown a {
+    @apply text-blue-500;
+  }
+  .markdown h1 {
+    @apply font-bold;
+  }
+  .markdown a:hover {
+    @apply underline;
+  }
+}

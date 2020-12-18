@@ -9,8 +9,11 @@ export default function NavigationItems() {
       <NavigationItem link="/" exact>
         Home
       </NavigationItem>
-      <NavigationItem link="/explore" exact>
-        Explore
+      <NavigationItem link="/entertainment" exact>
+        Entertainment
+      </NavigationItem>
+      <NavigationItem link="/event" exact>
+        Events
       </NavigationItem>
       <NavigationItem link="/class" exact>
         Class

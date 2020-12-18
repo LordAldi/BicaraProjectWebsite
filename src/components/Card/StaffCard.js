@@ -1,12 +1,12 @@
 import image from "../../assets/images/raya.png";
 const StaffCard = ({ data }) => {
-  const { name, desc, role, img } = data;
+  const { name, desc, role, photo } = data;
   return (
     <div className="px-10 ">
       <figure className="bg-gray-100 rounded-xl p-8">
         <img
           className="w-32 h-32 rounded-full mx-auto object-cover"
-          src={img}
+          src={photo.url}
         />
         <div class="pt-6  text-center  space-y-4">
           <blockquote>

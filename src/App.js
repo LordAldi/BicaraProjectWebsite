@@ -9,10 +9,12 @@ import Layout from "./hoc/Layout/Layout";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Video from "./containers/Video/Video";
-import AuthRoute from "./components/utils/AuthRoute/AuthRoute";
+// import AuthRoute from "./components/utils/AuthRoute/AuthRoute";
 import Category from "./containers/Category/Category";
 import ClassItem from "./containers/Class/ClassItem/ClassItem";
 import EditorsPick from "./containers/EditorsPick/EditorsPick";
+import EventPage from "./containers/Event/Event";
+import EventItem from "./containers/Event/EventItem/EventItem";
 // import { useState, useEffect } from "react";
 
 // import "~slick-carousel/slick/slick.css";
@@ -23,13 +25,15 @@ function App() {
   let routes = (
     <Switch>
       <Route path="/Home" component={Home} />
-      <Route path="/explore" component={Explore} />
+      <Route path="/entertainment" component={Explore} />
+      <Route path="/event/:slug" component={EventItem} />
+      <Route path="/event" component={EventPage} />
       <Route path="/class/:slug" component={ClassItem} />
       <Route path="/class" component={Class} />
       <Route path="/about" component={About} />
       <Route path="/ep/:slug" component={EditorsPick} />
-      <AuthRoute path="/signin" component={SignIn} />
-      <AuthRoute path="/login" component={Login} />
+      {/* <AuthRoute path="/signin" component={SignIn} />
+      <AuthRoute path="/login" component={Login} /> */}
       <Route path="/collection/:slug" component={Video} />
       <Route path="/category/:slug" component={Category} />
       <Route path="/" exact component={Home} />

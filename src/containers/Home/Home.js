@@ -6,6 +6,8 @@ import { useContext } from "react";
 import { UserContext } from "../../Provider/UserProvider/UserProvider";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import CourselCoba from "../../components/Coursel/CourselCoba";
+import EventCard from "../../components/Card/EventCard";
 const DATA = gql`
   query getCoursel {
     coursel {
@@ -18,7 +20,15 @@ const DATA = gql`
         }
       }
     }
-    videos(limit: 8, sort: "created_at:desc") {
+    acaras(limit: 6, sort: "published_at:desc") {
+      id
+      name
+      thumbnail {
+        url
+      }
+      slug
+    }
+    videos(limit: 8, sort: "published_at:desc") {
       id
       judul
       thumbnail {
@@ -26,7 +36,7 @@ const DATA = gql`
       }
       slug
     }
-    editors(limit: 3, sort: "created_at:desc") {
+    editors(limit: 3, sort: "published_at:desc") {
       id
       thumbnail {
         url
@@ -34,7 +44,7 @@ const DATA = gql`
       name
       slug
     }
-    classes(limit: 3, sort: "created_at:desc") {
+    classes(limit: 3, sort: "published_at:desc") {
       id
       slug
       thumbnail {
@@ -49,7 +59,7 @@ const DATA = gql`
 export default function Home() {
   const { loading, error, data } = useQuery(DATA);
   const { user } = useContext(UserContext);
-
+  data && console.log(data.events);
   return (
     <div className="w-screen">
       <Helmet>
@@ -58,7 +68,7 @@ export default function Home() {
         <meta name="description" content="Home for Bicara Project" />
       </Helmet>
       {!loading && data ? (
-        <Coursel data={data.coursel.CourselItem} />
+        <CourselCoba data={data.coursel.CourselItem} />
       ) : (
         <div className="h-96 bg-secondary w-full animate-pulse"></div>
       )}
@@ -66,13 +76,35 @@ export default function Home() {
         {/* <p>hallo {user.username}</p>
         <p> {user.isAuth ? "isAuth" : "notAuth"}</p>
         <p>your ID {user.ID}</p> */}
+        <h3 className="text-2xl	p-2 font-bold	">Events</h3>
+        {!loading && data ? (
+          <div className="grid grid-cols-2 lg:grid-cols-4 justify-center	 gap-4">
+            {data.acaras.map((event, i) => {
+              return (
+                <Link
+                  to={`${event.slug ? "/event/" + event.slug : "/"}`}
+                  key={event.id}
+                >
+                  <EventCard rounded data={event} />
+                </Link>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 lg:grid-cols-4 justify-center	 gap-4">
+            <div className="h-60 bg-secondary w-full animate-pulse"></div>
+            <div className="h-60 bg-secondary w-full animate-pulse"></div>
+            <div className="h-60 bg-secondary w-full animate-pulse"></div>
+            <div className="h-60 bg-secondary w-full animate-pulse"></div>
+          </div>
+        )}
         <h3 className="text-2xl	p-2 font-bold	">New Release</h3>
         {!loading && data ? (
           <div className="grid grid-cols-2 lg:grid-cols-4 justify-center	 gap-4">
             {data.videos.map((video, i) => {
               return (
                 <Link
-                  to={`${video.slug ? "/collection/" + video.slug : "/"}`}
+                  to={`${video.slug ? "/collection/" + video.Slug : "/"}`}
                   key={video.id}
                 >
                   <ContentCard rounded data={video} hide={i > 3} />
