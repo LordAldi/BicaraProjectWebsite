@@ -3,6 +3,7 @@ import char from "../../assets/images/char.png";
 import Slider from "react-slick";
 import StaffCard from "../../components/Card/StaffCard";
 import { useQuery, gql } from "@apollo/client";
+import { Helmet } from "react-helmet";
 
 const DATA = gql`
   query getTeam {
@@ -67,6 +68,11 @@ export default function About() {
   }
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>About Us</title>
+        <meta name="description" content="About Bicara Project" />
+      </Helmet>
       <div
         className="bg-local bg-clip-border h-700 md:h-screen bg-cover bg-no-repeat bg-top  flex flex-col items-center bg-opacity-80	"
         style={{ backgroundImage: `url(${hero})` }}
