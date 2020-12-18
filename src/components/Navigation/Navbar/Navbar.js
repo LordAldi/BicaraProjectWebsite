@@ -9,7 +9,7 @@ export default function Navbar({ drawerToggleClicked }) {
       <div className="h-4/5">
         <Logo />
       </div>
-      <nav className="h-full hidden md:block">
+      <nav className="h-full w-full justify-center hidden md:block">
         <NavigationItems />
       </nav>
     </header>
