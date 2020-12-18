@@ -1,12 +1,7 @@
-import Button from "../../components/UI/Button/Button";
-import { useState } from "react";
 import hero from "../../assets/images/aboutus.jpg";
 import char from "../../assets/images/char.png";
 import Slider from "react-slick";
 import StaffCard from "../../components/Card/StaffCard";
-import raya from "../../assets/images/raya.png";
-import joddy from "../../assets/images/joddy.png";
-import chika from "../../assets/images/chika.png";
 import { useQuery, gql } from "@apollo/client";
 
 const DATA = gql`
@@ -60,56 +55,12 @@ export default function About() {
       },
     ],
   };
-  const staffs = [
-    {
-      name: "Rana Rayendra",
-      desc:
-        "Tailwind CSS is the only framework that I've seen scale on largeteams. It’s easy to customize, adapts to any design, and the buildsize is tiny.",
-      role: "Chief Executive Officer",
-      img: raya,
-    },
-    {
-      name: "Joddy Caprinata",
-      desc:
-        "Tailwind CSS is the only framework that I've seen scale on largeteams. It’s easy to customize, adapts to any design, and the buildsize is tiny.",
-      role: "Chief Operational Officer",
-      img: joddy,
-    },
-    {
-      name: "Chika Audhika",
-      desc:
-        "Tailwind CSS is the only framework that I've seen scale on largeteams. It’s easy to customize, adapts to any design, and the buildsize is tiny.",
-      role: "Chief Marketing Officer",
-      img: chika,
-    },
-    {
-      name: "Rana Rayendra",
-      desc:
-        "Tailwind CSS is the only framework that I've seen scale on largeteams. It’s easy to customize, adapts to any design, and the buildsize is tiny.",
-      role: "Chief Executive Officer",
-      img: raya,
-    },
-    {
-      name: "Joddy Caprinata",
-      desc:
-        "Tailwind CSS is the only framework that I've seen scale on largeteams. It’s easy to customize, adapts to any design, and the buildsize is tiny.",
-      role: "Chief Operational Officer",
-      img: joddy,
-    },
-    {
-      name: "Chika Audhika",
-      desc:
-        "Tailwind CSS is the only framework that I've seen scale on largeteams. It’s easy to customize, adapts to any design, and the buildsize is tiny.",
-      role: "Chief Marketing Officer",
-      img: chika,
-    },
-  ];
   let team = <div>Loading...</div>;
   if (!loading && data) {
     team = (
       <Slider {...settings}>
         {data.team.TeamMember.map((staff) => {
-          return <StaffCard data={staff} />;
+          return <StaffCard data={staff} key={staff.id} />;
         })}
       </Slider>
     );

@@ -1,9 +1,9 @@
-import Coursel from "../../components/Coursel/Coursel";
+// import Coursel from "../../components/Coursel/Coursel";
 import { useQuery, gql } from "@apollo/client";
 import ContentCard from "../../components/Card/ContentCard";
 import ClassCard from "../../components/Card/ClassCard";
-import { useContext } from "react";
-import { UserContext } from "../../Provider/UserProvider/UserProvider";
+// import { useContext } from "react";
+// import { UserContext } from "../../Provider/UserProvider/UserProvider";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import CourselCoba from "../../components/Coursel/CourselCoba";
@@ -58,8 +58,7 @@ const DATA = gql`
 
 export default function Home() {
   const { loading, error, data } = useQuery(DATA);
-  const { user } = useContext(UserContext);
-  data && console.log(data.events);
+  // const { user } = useContext(UserContext);
   return (
     <div className="w-screen">
       <Helmet>
@@ -104,7 +103,7 @@ export default function Home() {
             {data.videos.map((video, i) => {
               return (
                 <Link
-                  to={`${video.slug ? "/collection/" + video.Slug : "/"}`}
+                  to={`${video.slug ? "/collection/" + video.slug : "/"}`}
                   key={video.id}
                 >
                   <ContentCard rounded data={video} hide={i > 3} />
@@ -147,7 +146,9 @@ export default function Home() {
               })}
             </div>
             <div className="flex justify-end">
-              <p>see all class</p>
+              <Link to="/class">
+                <p>see all class</p>
+              </Link>
             </div>
           </div>
         ) : (

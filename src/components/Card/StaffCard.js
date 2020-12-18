@@ -8,14 +8,14 @@ const StaffCard = ({ data }) => {
           className="w-32 h-32 rounded-full mx-auto object-cover"
           src={photo.url}
         />
-        <div class="pt-6  text-center  space-y-4">
+        <div className="pt-6  text-center  space-y-4">
           <blockquote>
-            <p class="text-lg font-semibold">“{desc}”</p>
+            <p className="text-lg font-semibold">“{desc}”</p>
           </blockquote>
-          <figcaption class="font-medium">
-            <div class="text-indigo-600">{name}</div>
-            <div class="text-gray-500">{role}</div>
-            <div class="text-gray-500">at Bicara Project</div>
+          <figcaption className="font-medium">
+            <div className="text-indigo-600">{name}</div>
+            <div className="text-gray-500">{role}</div>
+            <div className="text-gray-500">at Bicara Project</div>
           </figcaption>
         </div>
       </figure>

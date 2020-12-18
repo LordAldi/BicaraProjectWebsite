@@ -2,7 +2,6 @@ import { useQuery, gql } from "@apollo/client";
 import { Helmet } from "react-helmet";
 import ReactMarkdown from "react-markdown";
 
-import { Link } from "react-router-dom";
 const DATA = gql`
   query Event($slug: String) {
     acaraBySlug(slug: $slug) {
@@ -16,15 +15,14 @@ const DATA = gql`
   }
 `;
 const EventItem = ({ match }) => {
-  const { loading, error, data } = useQuery(DATA, {
+  const { loading, data } = useQuery(DATA, {
     variables: {
       slug: match.params.slug,
     },
   });
-  console.log(data);
   let show = null;
   if (data) {
-    const { name, thumbnail, id, desc } = data.acaraBySlug;
+    const { name, thumbnail, desc } = data.acaraBySlug;
 
     show = (
       <div className="container mx-auto px-10 flex items-center flex-col">

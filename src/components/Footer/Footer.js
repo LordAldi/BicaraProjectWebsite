@@ -38,7 +38,7 @@ const Footer = () => {
         </ul>
         <div className="flex flex-col content-center justify-center	">
           <h5 className="self-center py-1">Social Media</h5>
-          <div className="flex">
+          <div className="flex items-center">
             <a href="https://www.instagram.com/bicara.project/">
               <img
                 src={ig}

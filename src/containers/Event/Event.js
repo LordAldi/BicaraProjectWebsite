@@ -1,5 +1,5 @@
 import React from "react";
-import banner from "../../assets/images/bannerClass.jpg";
+import banner from "../../assets/images/bannerEvent.jpg";
 import { useQuery, gql } from "@apollo/client";
 import EventCard from "../../components/Card/EventCard";
 import { Link } from "react-router-dom";
