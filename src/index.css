@@ -12,4 +12,7 @@
   .markdown a:hover {
     @apply underline;
   }
+  .markdown img {
+    @apply max-h-72;
+  }
 }

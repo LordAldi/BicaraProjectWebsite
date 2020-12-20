@@ -88,21 +88,55 @@ export default function About() {
         </p>
       </div>
       <div className="flex flex-col m-10">
-        <p className="z-10  text-5xl md:text-8xl md:text-center	font-bold leading-none">
-          Brighter, Louder,
+        <p className="z-10  text-5xl md:text-8xl md:text-center	font-bold leading-none mb-4">
+          House of Public Speaking Improvement
         </p>
-        <p className="z-10 text-5xl md:text-8xl	md:text-center font-bold leading-none">
+        {/* <p className="z-10 text-5xl md:text-8xl	md:text-center font-bold leading-none">
           More Power
-        </p>
+        </p> */}
         <p className="z-10 text-3xl md:text-4xl font-semibold text-center text-gray-500">
           Tentang Bicara Project
         </p>
         <div className="flex flex-col md:flex-row pt-8 ">
           <img src={char} className="w-full md:w-2/5" />
           <div className="flex flex-col justify-center pl-6 ">
-            <p className="leading-relaxed	text-lg	 text-justify">
-              Bicara Project adalah House of Public Speaking Improvement dengan
-              pilar Class, Content, dan Event.
+            <p className="leading-relaxed	text-lg	 text-justify mb-4	">
+              Bicara Project adalah{" "}
+              <span className="italic">
+                House of Public Speaking Improvement
+              </span>{" "}
+              dengan pilar <span className="italic">Class, Content,</span> dan{" "}
+              <span className="italic">Event.</span>
+            </p>
+            <p className="leading-relaxed	text-lg	 text-justify mb-4	">
+              Pilar <span className="italic">Class</span> yang telah diikuti
+              berbagai macam kalangan dari pelajar hingga profesional,
+              menghadirkan materi{" "}
+              <span className="italic">public speaking</span> yang memiliki
+              paket lengkap untuk membentuk kepribadian seorang professional{" "}
+              <span className="italic">public speaker</span> dengan cara yang
+              menyenangkan.
+            </p>
+            <p className="leading-relaxed	text-lg	 text-justify mb-4	">
+              Pilar <span className="italic">Content</span> dengan memproduksi
+              konten-konten menarik yang edukatif. Tayangan disajikan dengan
+              berbagai cara, dari{" "}
+              <span className="italic">talkshow, fun fact,</span> hingga{" "}
+              <span className="italic">sharing</span> moment yang dapat
+              dinikmati oleh audiens.
+            </p>
+            <p className="leading-relaxed	text-lg	 text-justify mb-4	">
+              Pilar <span className="italic">Event</span> sebagai sarana edukasi
+              berbagai macam ilmu pengetahuan dengan cara yang seru. Telah
+              diselenggarakan berbagai macam event yang dimotori oleh Bicara
+              Project dari bidang kesehatan, pendidikan, hingga kemasyarakatan.
+            </p>
+            <p className="leading-relaxed	text-lg	 text-justify mb-4	">
+              Bicara Project memiliki nilai dasar{" "}
+              <span className="font-bold">PRO-DU-C-TIVE</span>
+              <span className="italic">
+                (Professional-Education-Caring-Inovative and Crative)
+              </span>
             </p>
           </div>
         </div>

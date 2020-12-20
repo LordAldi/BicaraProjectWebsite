@@ -16,7 +16,7 @@ const StaffCard = ({ data }) => {
           <figcaption className="font-medium">
             <div className="text-indigo-600">{name}</div>
             <div className="text-gray-500">{role}</div>
-            <div className="text-gray-500">at Bicara Project</div>
+            <div className="text-gray-500">of Bicara Project</div>
           </figcaption>
         </div>
       </figure>
