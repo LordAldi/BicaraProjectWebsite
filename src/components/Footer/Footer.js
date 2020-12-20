@@ -20,14 +20,20 @@ const Footer = () => {
               Home
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/explore" exact activeClassName="font-bold">
-              Explore
-            </NavLink>
-          </li>
+
           <li>
             <NavLink to="/class" exact activeClassName="font-bold">
               Class
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/content" exact activeClassName="font-bold">
+              Content
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/event" exact activeClassName="font-bold">
+              Event
             </NavLink>
           </li>
           <li>

@@ -1,22 +1,22 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import NavigationItem from "./NavigationItem/NavigationItem";
-import { UserContext } from "../../../Provider/UserProvider/UserProvider";
+// import { UserContext } from "../../../Provider/UserProvider/UserProvider";
 export default function NavigationItems() {
-  const { user, logout } = useContext(UserContext);
+  // const { user, logout } = useContext(UserContext);
 
   return (
     <ul className="m-0 p-0 flex list-none flex-col md:flex-row items-center md:justify-center h-full">
       <NavigationItem link="/" exact>
         Home
       </NavigationItem>
-      <NavigationItem link="/entertainment" exact>
-        Entertainment
+      <NavigationItem link="/class" exact>
+        Class
+      </NavigationItem>
+      <NavigationItem link="/content" exact>
+        Content
       </NavigationItem>
       <NavigationItem link="/event" exact>
         Events
-      </NavigationItem>
-      <NavigationItem link="/class" exact>
-        Class
       </NavigationItem>
       <NavigationItem link="/about" exact>
         About

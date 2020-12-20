@@ -1,4 +1,4 @@
-import image from "../../assets/images/raya.png";
+// import image from "../../assets/images/raya.png";
 const StaffCard = ({ data }) => {
   const { name, desc, role, photo } = data;
   return (
@@ -7,6 +7,7 @@ const StaffCard = ({ data }) => {
         <img
           className="w-32 h-32 rounded-full mx-auto object-cover"
           src={photo.url}
+          alt={name}
         />
         <div className="pt-6  text-center  space-y-4">
           <blockquote>

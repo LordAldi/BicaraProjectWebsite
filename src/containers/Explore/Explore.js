@@ -87,8 +87,8 @@ export default function Explore() {
     <div className="w-screen container mx-auto lg:px-20">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Entertaintment</title>
-        <meta name="description" content="Entertaintment for Bicara Project" />
+        <title>Content</title>
+        <meta name="description" content="Content for Bicara Project" />
       </Helmet>
       {show}
     </div>

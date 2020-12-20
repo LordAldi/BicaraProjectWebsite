@@ -1,7 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import About from "./containers/About/About";
-import SignIn from "./containers/Auth/SignIn/SignIn";
-import Login from "./containers/Auth/Login/Login";
+// import SignIn from "./containers/Auth/SignIn/SignIn";
+// import Login from "./containers/Auth/Login/Login";
 import Class from "./containers/Class/Class";
 import Explore from "./containers/Explore/Explore";
 import Home from "./containers/Home/Home";
@@ -25,7 +25,7 @@ function App() {
   let routes = (
     <Switch>
       <Route path="/Home" component={Home} />
-      <Route path="/entertainment" component={Explore} />
+      <Route path="/content" component={Explore} />
       <Route path="/event/:slug" component={EventItem} />
       <Route path="/event" component={EventPage} />
       <Route path="/class/:slug" component={ClassItem} />

@@ -101,32 +101,18 @@ export default function About() {
           <img src={char} className="w-full md:w-2/5" />
           <div className="flex flex-col justify-center pl-6 ">
             <p className="leading-relaxed	text-lg	 text-justify">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec
-              dolor ut nunc aliquam faucibus eu ut eros. Nunc vitae blandit
-              ante. Phasellus vulputate, ligula vulputate malesuada efficitur,
-              leo lectus pharetra ex, id feugiat metus ante id risus. Nunc
-              efficitur volutpat justo non scelerisque. Maecenas ligula turpis,
-              condimentum ut consectetur non, congue in mi. Maecenas in erat ac
-              quam eleifend posuere. Proin pretium maximus fringilla.
-            </p>
-            <p className="leading-relaxed	text-lg text-justify	">
-              Nunc scelerisque fermentum ex ac tempor. Aenean sed dui metus.
-              Praesent ac gravida arcu, quis porta nunc. Vestibulum gravida
-              lobortis dui a rutrum. Nulla elementum tincidunt dui et semper.
-              Aliquam erat volutpat. Aenean ante augue, tincidunt quis tellus
-              et, ultricies mattis libero. Integer congue neque in condimentum
-              tempus. Donec nisi orci, efficitur sed lacus ut, congue accumsan
-              magna. Duis ultricies consequat nunc et imperdiet.
+              Bicara Project adalah House of Public Speaking Improvement dengan
+              pilar Class, Content, dan Event.
             </p>
           </div>
         </div>
       </div>
       <div className="flex flex-col m-10">
         <p className="z-10  text-5xl md:text-8xl md:text-center	font-bold leading-none">
-          Meet Our
+          Meet Founder of
         </p>
         <p className="z-10 text-5xl md:text-8xl	md:text-center font-bold leading-none">
-          Bicara Team
+          Bicara Project
         </p>
         <div className="hidden my-10 md:flex flex-col">
           <p className="z-10 text-2xl md:text-3xl font-semibold text-center text-gray-500 leading-tight">

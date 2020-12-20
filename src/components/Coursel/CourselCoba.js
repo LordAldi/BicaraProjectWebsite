@@ -1,5 +1,4 @@
 import Slider from "react-slick";
-import CourselItem from "./CourselItem/CourselItem";
 import React from "react";
 import CourselItemCoba from "./CourselItem/CourselItemCoba";
 
