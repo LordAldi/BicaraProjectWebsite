@@ -119,7 +119,7 @@ export default function Home() {
             <div className="h-60 bg-secondary w-full animate-pulse"></div>
           </div>
         )}
-        <h3 className="text-2xl	p-2 font-bold	mt-6">EDITORS' PICK</h3>
+        <h3 className="text-2xl	p-2 font-bold	mt-6">Editor's Pick</h3>
         {!loading && data ? (
           <div className="grid grid-cols-1  md:grid-cols-3  justify-center	 gap-4">
             {data.editors.map((video, i) => {

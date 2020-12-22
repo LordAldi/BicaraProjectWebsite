@@ -9,8 +9,8 @@ import { ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { UserProvider } from "./Provider/UserProvider/UserProvider";
 const httpLink = createHttpLink({
-  // uri: "https://admin.bicaraproject.com/graphql",
-  uri: "http://localhost:1337/graphql",
+  uri: "https://admin.bicaraproject.com/graphql",
+  // uri: "http://localhost:1337/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {

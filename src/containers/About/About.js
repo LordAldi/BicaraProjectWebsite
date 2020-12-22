@@ -77,8 +77,8 @@ export default function About() {
         className="bg-local bg-clip-border h-700 md:h-screen bg-cover bg-no-repeat bg-top  flex flex-col items-center bg-opacity-80	"
         style={{ backgroundImage: `url(${hero})` }}
       >
-        <p className="z-10 pt-20 md:pt-40 text-3xl md:text-4xl	text-white font-semibold	">
-          About us
+        <p className="z-10 pt-20  text-3xl md:text-4xl	text-white font-semibold	">
+          About Us
         </p>
         <h1 className="z-10 pt-20 text-5xl md:text-9xl	text-white	font-bold leading-none	">
           Bicara Project
@@ -89,66 +89,49 @@ export default function About() {
       </div>
       <div className="flex flex-col m-10">
         <p className="z-10  text-5xl md:text-8xl md:text-center	font-bold leading-none mb-4">
-          House of Public Speaking Improvement
+          Meet The Founder
         </p>
-        {/* <p className="z-10 text-5xl md:text-8xl	md:text-center font-bold leading-none">
-          More Power
-        </p> */}
-        <p className="z-10 text-3xl md:text-4xl font-semibold text-center text-gray-500">
-          Tentang Bicara Project
+        <p className="z-10  text-5xl md:text-8xl md:text-center	font-bold leading-none mb-4">
+          of Bicara Project
         </p>
         <div className="flex flex-col md:flex-row pt-8 ">
           <img src={char} className="w-full md:w-2/5" />
           <div className="flex flex-col justify-center pl-6 ">
-            <p className="leading-relaxed	text-lg	 text-justify mb-4	">
-              Bicara Project adalah{" "}
-              <span className="italic">
-                House of Public Speaking Improvement
-              </span>{" "}
-              dengan pilar <span className="italic">Class, Content,</span> dan{" "}
-              <span className="italic">Event.</span>
+            <p className="leading-relaxed	text-lg	 text-justify mb-4	italic">
+              Bicara Project is a House of Public Speaking Improvement with
+              Class, Content, and Events as a Pillars
             </p>
-            <p className="leading-relaxed	text-lg	 text-justify mb-4	">
-              Pilar <span className="italic">Class</span> yang telah diikuti
-              berbagai macam kalangan dari pelajar hingga profesional,
-              menghadirkan materi{" "}
-              <span className="italic">public speaking</span> yang memiliki
-              paket lengkap untuk membentuk kepribadian seorang professional{" "}
-              <span className="italic">public speaker</span> dengan cara yang
-              menyenangkan.
+            <p className="leading-relaxed	text-lg	 text-justify mb-4	italic">
+              Joddy Caprinata (Founder of Bicara Project) is a professional
+              master of ceremonies with many experiences hosting at corporate
+              and government throughout Indonesia
             </p>
-            <p className="leading-relaxed	text-lg	 text-justify mb-4	">
-              Pilar <span className="italic">Content</span> dengan memproduksi
-              konten-konten menarik yang edukatif. Tayangan disajikan dengan
-              berbagai cara, dari{" "}
-              <span className="italic">talkshow, fun fact,</span> hingga{" "}
-              <span className="italic">sharing</span> moment yang dapat
-              dinikmati oleh audiens.
+            <p className="leading-relaxed	text-lg	 text-justify mb-4	italic">
+              Chika Audhika (Co-founder of Bicara Project) has been in this
+              entertainment industry for over ten years, from announcers to
+              YouTubers, and other experiences as a host on various shows
             </p>
-            <p className="leading-relaxed	text-lg	 text-justify mb-4	">
-              Pilar <span className="italic">Event</span> sebagai sarana edukasi
-              berbagai macam ilmu pengetahuan dengan cara yang seru. Telah
-              diselenggarakan berbagai macam event yang dimotori oleh Bicara
-              Project dari bidang kesehatan, pendidikan, hingga kemasyarakatan.
+            <p className="leading-relaxed	text-lg	 text-justify mb-4	italic">
+              Rana Rayendra (Co-founder of Bicara Project) is a former news
+              presenter and journalist at Indosiar, SCTV and MNC Media, and now
+              he started as content creative at Narasi.
             </p>
-            <p className="leading-relaxed	text-lg	 text-justify mb-4	">
-              Bicara Project memiliki nilai dasar{" "}
-              <span className="font-bold">PRO-DU-C-TIVE</span>
-              <span className="italic">
-                (Professional-Education-Caring-Inovative and Crative)
-              </span>
+            <p className="leading-relaxed	text-lg	 text-justify mb-4 italic">
+              Bicara Project has a core value:
+              <span className="font-bold"> PRO-DU-C-TIVE </span>{" "}
+              (Professional-Educate-Care-Inovative and Crative)
             </p>
           </div>
         </div>
       </div>
       <div className="flex flex-col m-10">
         <p className="z-10  text-5xl md:text-8xl md:text-center	font-bold leading-none">
-          Meet Founder of
+          Say Hi to The Team
         </p>
-        <p className="z-10 text-5xl md:text-8xl	md:text-center font-bold leading-none">
+        {/* <p className="z-10 text-5xl md:text-8xl	md:text-center font-bold leading-none">
           Bicara Project
-        </p>
-        <div className="hidden my-10 md:flex flex-col">
+        </p> */}
+        {/* <div className="hidden my-10 md:flex flex-col">
           <p className="z-10 text-2xl md:text-3xl font-semibold text-center text-gray-500 leading-tight">
             Bicara adalah tempat yang kita bangun
           </p>
@@ -158,7 +141,7 @@ export default function About() {
           <p className="z-10 text-2xl md:text-3xl font-semibold text-center text-gray-500 leading-tight">
             harapan yang besar dan penuh manfaat.
           </p>
-        </div>
+        </div> */}
       </div>
       <div className="lg:px-32 pb-24">{team}</div>
     </div>
